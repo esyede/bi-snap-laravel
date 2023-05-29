@@ -33,7 +33,7 @@ class RequestLogger
      *
      * @return Logger|null
      */
-    public function log()
+    public function getLogger()
     {
         if (is_null(Config::instance()->logChannel())) {
             return null;
@@ -101,7 +101,10 @@ class RequestLogger
             return $headers;
         }
 
-        $censoredKeys = ['authorization', 'x-signature'];
+        $censoredKeys = [
+            'authorization',
+            'x-signature',
+        ];
 
         return collect($headers)->map(function ($value, $key) use ($censoredKeys) {
             return (in_array(strtolower($key), $censoredKeys) && is_array($value) && !empty($value))
@@ -123,7 +126,9 @@ class RequestLogger
             return $body;
         }
 
-        $censoredKeys = ['accessToken'];
+        $censoredKeys = [
+            'accessToken',
+        ];
 
         return collect($body)->map(function ($value, $key) use ($censoredKeys) {
             return in_array($key, $censoredKeys) ? '**********' : $value;
@@ -135,14 +140,14 @@ class RequestLogger
      */
     public function __destruct()
     {
-        if (!$this->log()) {
+        if (!$this->getLogger()) {
             return;
         }
 
         try {
             $request = $this->response->transferStats->getRequest();
 
-            $this->log()->log(
+            $this->getLogger()->log(
                 Config::instance()->isDebug() ? 'DEBUG' : 'INFO',
                 $this->message($request),
                 ['request' => $this->requestContext($request), 'response' => $this->responseContext()]
