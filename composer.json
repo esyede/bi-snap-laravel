@@ -1,0 +1,38 @@
+{
+    "name": "bi-snap-laravel",
+    "description": "Standar Nasional Open API Pembayaran (SNAP) Package for Laravel",
+    "authors": [
+        {
+            "name": "Suyadi",
+            "email": "suyadi.1992@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "illuminate/http": "^9.0|^10.0",
+        "illuminate/log": "^9.0|^10.0",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.0",
+        "orchestra/testbench": "^7.0|^8.0",
+        "phpunit/phpunit": "^9.3",
+        "phpseclib/phpseclib": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Esyede\\BiSnap\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Esyede\\BiSnap\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    }
+}
