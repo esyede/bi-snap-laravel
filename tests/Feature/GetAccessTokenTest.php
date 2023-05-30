@@ -15,7 +15,7 @@ class GetAccessTokenTest extends TestCase
         parent::setUp();
 
         Http::fake([
-            'http://bi-snap-laravel.test/api-test/v1.0/access-token/b2b' => Http::response([
+            'http://localhost:8000/api-test/v1.0/access-token/b2b' => Http::response([
                 'responseCode' => '2007300',
                 'responseMessage' => 'Sucessful',
                 'accessToken' => 'nd8vzUzOHlbKf82Hcn5VP22SdO56WKAoQC7mExbTfd68tPBzQ84Ocv',
@@ -31,7 +31,7 @@ class GetAccessTokenTest extends TestCase
 
         $response = (new AuthAccessToken())->get();
 
-        $this->assertTrue($response->status() == 200);
+        $this->assertTrue($response->status() === 200);
         $this->assertArrayHasKey('responseCode', $response->json());
         $this->assertArrayHasKey('responseMessage', $response->json());
         $this->assertArrayHasKey('accessToken', $response->json());

@@ -1,5 +1,5 @@
 {
-    "name": "bi-snap-laravel",
+    "name": "esyede/bi-snap-laravel",
     "description": "Standar Nasional Open API Pembayaran (SNAP) Package for Laravel",
     "authors": [
         {

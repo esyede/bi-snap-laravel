@@ -16,14 +16,14 @@ class IntrabankTransferTest extends TestCase
         parent::setUp();
 
         Http::fake([
-            'http://bi-snap-laravel.test/api-test/v1.0/access-token/b2b' => Http::response([
+            'http://localhost:8000/api-test/v1.0/access-token/b2b' => Http::response([
                 'responseCode' => '2007300',
                 'responseMessage' => 'Sucessful',
                 'accessToken' => 'nd8vzUzOHlbKf82Hcn5VP22SdO56WKAoQC7mExbTfd68tPBzQ84Ocv',
                 'tokenType' => 'Bearer',
                 'expiresIn' => '900',
             ]),
-            'http://bi-snap-laravel.test/api-test/v1.0/transfer-intrabank' => Http::response([
+            'http://localhost:8000/api-test/v1.0/transfer-intrabank' => Http::response([
                 'responseCode' => '2001700',
                 'responseMessage' => 'Sucessful',
                 'beneficiaryAccountNo' => '0613008761',
@@ -48,7 +48,7 @@ class IntrabankTransferTest extends TestCase
         Config::load('test')->debug(true);
 
         $transfer = new Transfer(
-            'http://bi-snap-laravel.test',
+            'http://localhost:8000',
             '95051',
             time()
         );
@@ -59,7 +59,7 @@ class IntrabankTransferTest extends TestCase
             '0613008761',
             '0611116411',
             '2023-04-28T18:51:00+07:00',
-            'test@bi-snap-laravel.test',
+            'test@localhost:8000',
             'IDR',
             'INV00001',
             null,

@@ -27,7 +27,7 @@ abstract class TestCase extends Base
         // Bisa diganti dengan config biasa di laravel
         $config = $app->make(Repository::class);
         $config->set('snap.providers.test', [
-            'host' => 'http://bi-snap-laravel.test',
+            'host' => 'http://localhost:8000',
             'client_key' => '1176e4b7-4778-45c2-8044-630c5e7a392e',
             'client_secret' => 'IvrRfBAuQO3lDD8bfMqOslYcrwgFhI0z',
             'partner_id' => 'TEST',
